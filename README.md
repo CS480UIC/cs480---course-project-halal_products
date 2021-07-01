@@ -9,7 +9,7 @@ cs480---course-project-halal_products created by GitHub Classroom
 # Database
 HALAL_PRODUCTS
 # Author(s)
-Muhammad Abdul Wahhab
+Muhammad Abdul Wahhab,
 Muhammad Meraj
 # Database description
 There will be a list of products. Each product will have an ID, name, product category, manufacturer, product image, and halal status. Each product will belong to a category that will contain an ID, category name. Each product will have a manufacturer that will contain an ID, manufacturer name, and logo. 
