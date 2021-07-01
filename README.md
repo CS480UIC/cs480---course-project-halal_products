@@ -7,7 +7,7 @@ cs480---course-project-halal_products created by GitHub Classroom
 1. [Database description](#description)
  
 # Database
-HALAL_PRODUCTS
+halal_products
 # Author(s)
 Muhammad Abdul Wahhab,
 Muhammad Meraj
