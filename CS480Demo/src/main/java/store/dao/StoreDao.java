@@ -28,7 +28,8 @@ public class StoreDao {
 			Connection connect = DriverManager.getConnection(
 					"jdbc:mysql://127.0.0.1:3306/halal_products?" + "user=abdul&password=abdul123&serverTimezone=UTC");
 
-			String sql = "select *, r.id as region_name from store s join region r on s.region_id = r.id order by `name`, `address`, `zipcode`";
+			String sql = "select s.*, r.id as region_name from store s join region r on s.region_id = r.id order by `name`, `address`, `zipcode`";
+		//	String sql = "select * from store order by name";
 			PreparedStatement preparestatement = connect.prepareStatement(sql);
 			ResultSet resultSet = preparestatement.executeQuery();
 
