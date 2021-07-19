@@ -2,10 +2,8 @@ package region.service;
 
 import java.util.List;
 
-
 import region.domain.Region;
 import region.dao.RegionDao;
-
 
 
 /*
@@ -40,13 +38,13 @@ public class RegionService {
 
 		regionDao.update(region);
 	}
-	
+
 	public void delete(int id) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		regionDao.delete(id);
 	}
-	
+
 	public Region findById(int id) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		return regionDao.findById(id);
+
 	}
-	
 }

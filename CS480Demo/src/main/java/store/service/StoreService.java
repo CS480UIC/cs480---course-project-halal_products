@@ -2,45 +2,46 @@ package store.service;
 
 import java.util.List;
 
+import manufacturer.domain.Manufacturer;
+import manufacturer.service.ManufacturerException;
 import store.dao.StoreDao;
 import store.domain.Store;
 
-
-
 public class StoreService {
-	
-	private StoreDao storeDao = new StoreDao();
-	
-	/**
-	 * register a store
-	 * @param form
-	 * @throws ClassNotFoundException 
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
-	 */
-	
-	/*
-	 * regist might need changes to made
-	 * since the function checks the address exists or not.
-	 */
-	
-	public void regist(Store form) throws StoreException, ClassNotFoundException, InstantiationException, IllegalAccessException{
-		
-		// check the store name
-		Store store = storeDao.findByStoreName(form.getName());
-		if(store.getAddress()!=null && store.getAddress().equals(form.getAddress())) 
-			throw new StoreException("This store already exists in the database!");
-		storeDao.add(form);
-	}
-	
-	
-	public List<Object> findall() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
-		return storeDao.findall();
-		
-	}
-	
-	
-	
-	
 
+	private StoreDao storeDao = new StoreDao();
+
+	public List<Store> findall() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		return storeDao.findall();
+	}
+
+	public void add(Store store)
+			throws ManufacturerException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+		// check the user name
+		Store store1 = storeDao.findIfDuplicate(store);
+
+		if (store1.getName() != null && store1.getName().equals(store.getName()))
+			throw new ManufacturerException("This store exists!!!");
+
+		storeDao.add(store);
+	}
+
+	public void update(Store store)
+			throws ManufacturerException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+		// check the user name
+		Store store1 = storeDao.findIfDuplicateWithId(store);
+
+		if (store1.getName() != null && store1.getName().equals(store.getName()))
+			throw new ManufacturerException("This store exists!!!");
+
+		storeDao.update(store);
+	}
+
+	public void delete(int id) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		storeDao.delete(id);
+	}
+
+	public Store findById(int id) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		return storeDao.findById(id);
+	}
 }
