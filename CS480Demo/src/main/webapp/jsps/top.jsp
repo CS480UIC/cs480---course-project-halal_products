@@ -42,7 +42,8 @@
 		<c:otherwise>
 			Hello：${sessionScope.session_user.username };
 			<a href="<c:url value='/jsps/item.jsp'/>" target="body">Query Result</a> |&nbsp;
-			<a href="<c:url value='/findAllManufacturer'/>" target="body">Manufacturer</a>&nbsp;&nbsp;
+			<a href="<c:url value='/findAllManufacturer'/>" target="body">Manufacturer</a>|&nbsp;
+			<a href="<c:url value='/findAllRegion'/>" target="body">Region</a>&nbsp;&nbsp;
 		</c:otherwise>
 	</c:choose>
 
