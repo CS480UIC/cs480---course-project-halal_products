@@ -21,7 +21,7 @@
 			<c:otherwise><%text = "Update";%></c:otherwise>
 		</c:choose>
 	</display:column>
-	<h1><%=text%> Manufacturer</h1>
+	<h1><%=text%> Region</h1>
 	<p style="color: red; font-weight: 900">${msg }</p>
 	<form action="<c:url value='/addregion'/>" method="post">
 		<input type="hidden" name="id" value="${region.id }" /> Name :<input
