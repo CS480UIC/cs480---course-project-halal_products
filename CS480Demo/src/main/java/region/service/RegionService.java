@@ -5,7 +5,6 @@ import java.util.List;
 import region.domain.Region;
 import region.dao.RegionDao;
 
-
 /*
  * @author meraj
  */
