@@ -1,11 +1,16 @@
 package region.domain;
 
+/*
+ * @author meraj
+ */
+
+
 public class Region 
 {
 	/*
-	 * Correspond to the user table
+	 * Correspond to the region table
 	 */
-	
+	private int id;
 	private String name;
 
 	public String getName() {
@@ -18,8 +23,15 @@ public class Region
 	
 	@Override
 	public String toString() {
-		return "Region = " + name;
+		return "Region [id=" + id + ", name=" + name + "]";
 	}
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 }
