@@ -19,6 +19,7 @@
 			<th>Name</th>
 			<th>Address</th>
 			<th>zipcode</th>
+			<th>Region Name</th>
 			<th>Actions</th>
 		</tr>
 		<c:forEach items="${StoreList}" var="store">
@@ -26,6 +27,7 @@
 				<td>${store.name }</td>
 				<td>${store.address }</td>
 				<td>${store.zipcode }</td>
+				<td>${store.region_name }</td> 
 				<td><a href="<c:url value='/deleteStore?id=${store.id }'/>"
 					target="body">Delete</a> |&nbsp; <a
 					href="<c:url value='/addStore?id=${store.id }'/>"
