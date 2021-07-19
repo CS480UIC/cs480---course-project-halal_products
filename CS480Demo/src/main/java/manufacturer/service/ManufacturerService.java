@@ -37,4 +37,8 @@ public class ManufacturerService {
 	public void delete(int id) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		manufacturerDao.delete(id);
 	}
+	
+	public Manufacturer findById(int id) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		return manufacturerDao.findById(id);
+	}
 }

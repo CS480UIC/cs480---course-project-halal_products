@@ -151,7 +151,7 @@ public class ManufacturerDao {
 
 		return manufacturer;
 	}
-	
+
 	/**
 	 * @param manufacturer
 	 * @return
@@ -188,5 +188,30 @@ public class ManufacturerDao {
 		}
 
 		return manufacturer1;
+	}
+
+	public Manufacturer findById(int id) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+		Manufacturer manufacturer = new Manufacturer();
+
+		try {
+
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Connection connect = DriverManager.getConnection(
+					"jdbc:mysql://127.0.0.1:3306/halal_products?" + "user=abdul&password=abdul123&serverTimezone=UTC");
+
+			String sql = "select * from manufacturer where id=?";
+			PreparedStatement preparestatement = connect.prepareStatement(sql);
+			preparestatement.setInt(1, id);
+			ResultSet resultSet = preparestatement.executeQuery();
+
+			while (resultSet.next()) {
+				manufacturer.setId(resultSet.getInt("id"));
+				manufacturer.setName(resultSet.getString("name"));
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+		return manufacturer;
 	}
 }

@@ -22,9 +22,9 @@
 		<c:forEach items="${ManufacturerList}" var="manufacturer">
 			<tr>
 				<td>${manufacturer.name }</td>
-				<td><a href="<c:url value='/findAll?id=${manufacturer.id }'/>"
+				<td><a href="<c:url value='/delete?id=${manufacturer.id }'/>"
 					target="body">Delete</a> |&nbsp; <a
-					href="<c:url value='/findAll?id=${manufacturer.id }'/>"
+					href="<c:url value='/add?id=${manufacturer.id }'/>"
 					target="body">Update</a></td>
 			</tr>
 		</c:forEach>

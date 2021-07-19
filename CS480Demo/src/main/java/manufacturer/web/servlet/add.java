@@ -39,6 +39,44 @@ public class add extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		ManufacturerService manufacturerservice = new ManufacturerService();
+		Manufacturer manufacturer = new Manufacturer();
+		Map<String, String[]> paramMap = request.getParameterMap();
+		List<String> info = new ArrayList<String>();
+
+		for (String name : paramMap.keySet()) {
+			String[] values = paramMap.get(name);
+			info.add(values[0]);
+			System.out.println(name + ": " + Arrays.toString(values));
+		}
+		
+		int id = Integer.parseInt(info.get(0));
+		
+		try {
+			manufacturer = manufacturerservice.findById(id);
+
+			request.setAttribute("manufacturer", manufacturer);
+			request.getRequestDispatcher("/jsps/manufacturer/add.jsp").forward(request, response);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			request.setAttribute("msg", e.getMessage());
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			request.setAttribute("msg", e.getMessage());
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			request.setAttribute("msg", e.getMessage());
+		}
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		ManufacturerService manufacturerservice = new ManufacturerService();
 		Map<String, String[]> paramMap = request.getParameterMap();
 		Manufacturer manufacturer = new Manufacturer();
 		List<String> info = new ArrayList<String>();
@@ -50,32 +88,36 @@ public class add extends HttpServlet {
 			System.out.println(name + ": " + Arrays.toString(values));
 		}
 		
+		if(info.get(0) != "") {
+			manufacturer.setId(Integer.parseInt(info.get(0)));
+		}
+		else {
+			manufacturer.setId(0);
+		}
+		
 		manufacturer.setName(info.get(1));
-
+		
 		try {
-			manufacturerservice.add(manufacturer);
-
-			response.sendRedirect("findAllManufacturer");
+			if(manufacturer.getId() == 0) {
+				manufacturerservice.add(manufacturer);
+			}
+			else {
+				manufacturerservice.update(manufacturer);
+			}
+			
+			request.getRequestDispatcher("findAllManufacturer").forward(request, response);
 		} catch (ClassNotFoundException | ManufacturerException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			request.setAttribute("msg", e.getMessage());
+			request.setAttribute("manufacturer", manufacturer);
+			request.getRequestDispatcher("/jsps/manufacturer/add.jsp").forward(request, response);
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			request.setAttribute("msg", e.getMessage());
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			request.setAttribute("msg", e.getMessage());
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
