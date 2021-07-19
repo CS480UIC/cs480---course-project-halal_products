@@ -13,7 +13,7 @@ import user.domain.User;
 import user.service.UserService;
 
 /**
- * Servlet implementation class findAll
+ *  Servlet implementation class findAll
  */
 
 public class findAll extends HttpServlet {
