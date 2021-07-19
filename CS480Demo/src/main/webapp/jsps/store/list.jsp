@@ -9,7 +9,7 @@
 <body>
 	<h3 align="center">Store Table</h3>
 	<div style="text-align: center">
-		<a align="center" href="<c:url value='/jsps/store/add.jsp'/>" target="body">Add
+		<a align="center" href="<c:url value='/addStore'/>" target="body">Add
 			Store</a>
 	</div>
 	&nbsp;
@@ -18,7 +18,7 @@
 		<tr>
 			<th>Name</th>
 			<th>Address</th>
-			<th>zipcode</th>
+			<th>Zipcode</th>
 			<th>Region Name</th>
 			<th>Actions</th>
 		</tr>
