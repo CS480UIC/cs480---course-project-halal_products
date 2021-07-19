@@ -16,23 +16,23 @@ public class StoreService {
 	}
 
 	public void add(Store store)
-			throws ManufacturerException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+			throws StoreException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 		// check the user name
 		Store store1 = storeDao.findIfDuplicate(store);
 
 		if (store1.getName() != null && store1.getName().equals(store.getName()))
-			throw new ManufacturerException("This store exists!!!");
+			throw new StoreException("This store exists!!!");
 
 		storeDao.add(store);
 	}
 
 	public void update(Store store)
-			throws ManufacturerException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+			throws StoreException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 		// check the user name
 		Store store1 = storeDao.findIfDuplicateWithId(store);
 
 		if (store1.getName() != null && store1.getName().equals(store.getName()))
-			throw new ManufacturerException("This store exists!!!");
+			throw new StoreException("This store exists!!!");
 
 		storeDao.update(store);
 	}
