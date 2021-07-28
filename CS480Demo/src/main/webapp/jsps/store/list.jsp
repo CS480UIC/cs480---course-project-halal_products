@@ -11,6 +11,8 @@
 	<div style="text-align: center">
 		<a align="center" href="<c:url value='/addStore'/>" target="body">Add
 			Store</a>
+			<a align="center" href="<c:url value='/searchStore'/>" target="body">Search
+			Store</a>
 	</div>
 	&nbsp;
 	<table border="1" width="70%" align="center"
