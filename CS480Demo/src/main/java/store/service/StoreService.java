@@ -2,8 +2,7 @@ package store.service;
 
 import java.util.List;
 
-import manufacturer.domain.Manufacturer;
-import manufacturer.service.ManufacturerException;
+
 import store.dao.StoreDao;
 import store.domain.Store;
 
@@ -44,4 +43,21 @@ public class StoreService {
 	public Store findById(int id) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		return storeDao.findById(id);
 	}
+	
+	public List<Store> searchByRegion_Id(String reg) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		System.out.println("In StoreService:"+ reg);
+		return storeDao.searchByRegion_Id(reg);
+	}
+	
+	public List<Store> searchByStore_Name(String reg) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		System.out.println("In StoreService:"+ reg);
+		return storeDao.searchByStore_Name(reg);
+	}
+	
+	public List<Store> searchByZip(String reg) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		System.out.println("In StoreService:"+ reg);
+		return storeDao.searchByZip(reg);
+	}
+	
+	
 }
