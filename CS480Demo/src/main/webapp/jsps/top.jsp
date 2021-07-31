@@ -44,7 +44,7 @@
 			<a href="<c:url value='/jsps/item.jsp'/>" target="body">Query Result</a> |&nbsp;
 			<a href="<c:url value='/findAllManufacturer'/>" target="body">Manufacturer</a> |&nbsp;
 			<a href="<c:url value='/findAllRegion'/>" target="body">Region</a> |&nbsp;
-			<a href="<c:url value='/findAllStore'/>" target="body">Store</a>|&nbsp;
+			<a href="<c:url value='/findAllStore'/>" target="body">Store</a> |&nbsp;
 			<a href="<c:url value='/findAllProduct'/>" target="body">Product</a>&nbsp;&nbsp;
 		</c:otherwise>
 	</c:choose>
