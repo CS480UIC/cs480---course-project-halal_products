@@ -8,7 +8,6 @@ public class Store {
 	private String address;
 	private String region_name;
 	private int zipcode;
-	
 
 	public String getRegion_name() {
 		return region_name;
@@ -58,5 +57,4 @@ public class Store {
 		this.zipcode = zipcode;
 	}
 
-	
 }
