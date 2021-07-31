@@ -9,7 +9,8 @@
 <body>
 	<h3 align="center">Product Table</h3>
 	<div style="text-align: center">
-	<a align="center" href="<c:url value='/findProductNoStore'/>" target="body">Halal Products with No Store </a>
+	<a align="center" href="<c:url value='/findProductNoStore'/>" target="body">Halal Products with No Store</a> | 
+	<a align="center" href="<c:url value='/jsps/product/productDetail.jsp'/>" target="body">Halal Products Details</a>
 	</div>
 	&nbsp;
 	<table border="1" width="70%" align="center"
