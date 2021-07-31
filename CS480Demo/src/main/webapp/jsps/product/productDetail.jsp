@@ -9,10 +9,10 @@
 <body>
 	<h3 align="center">Halal Product Detail Table</h3>
 	<div style="text-align: center">
-		<form action="<c:url value='/add'/>" method="post">
+		<form action="<c:url value='/getProductDetail'/>" method="post">
 			Region Name :<input type="text" name="name" value="${region_name }" />
-			<span style="color: red; font-weight: 900">${errors.name }</span> <br />
-			<input type="submit" value="Search" />
+			<span style="color: red; font-weight: 900">${msg }</span> <br /> <input
+				type="submit" value="Search" />
 		</form>
 	</div>
 	&nbsp;
@@ -31,7 +31,7 @@
 				<td>${product.manufacturer_name }</td>
 				<td>${product.store_name }</td>
 				<td>${product.region_name }</td>
-				<td>${product.certifucations }</td>
+				<td>${product.certifications }</td>
 			</tr>
 		</c:forEach>
 	</table>
