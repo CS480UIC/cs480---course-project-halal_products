@@ -42,4 +42,8 @@ public class ProductService {
 	public Product findById(int id) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		return productDao.findById(id);
 	}
+	
+	public List<Product> findProduct_NoStore() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		return productDao.findProduct_NoStore();
+	}
 }

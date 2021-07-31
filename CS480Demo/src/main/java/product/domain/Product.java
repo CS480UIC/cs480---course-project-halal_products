@@ -9,6 +9,7 @@ public class Product {
 	private int halal_status_id;
 	private String certifications;
 	
+	
 	public int getId() {
 		return id;
 	}
@@ -56,5 +57,5 @@ public class Product {
 	public void setCertifications(String certifications) {
 		this.certifications = certifications;
 	}
-
 }
+

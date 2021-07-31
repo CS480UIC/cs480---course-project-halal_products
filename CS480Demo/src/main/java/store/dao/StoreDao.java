@@ -358,5 +358,39 @@ public class StoreDao {
 	}
 	
 	
+	public List<Store> findByHalalProducts() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		List<Store> list = new ArrayList<>();
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Connection connect = DriverManager.getConnection(
+					"jdbc:mysql://127.0.0.1:3306/halal_products?" + "user=abdul&password=abdul123&serverTimezone=UTC");
+
+			String sql = "Select distinct s.*, r.name as region_name From store s join region r on s.region_id = r.id Join product_store ps on ps.store_id = s.id Where ps.availability = 1  Order By s.name";
+		//	String sql = "select * from store order by name";
+			PreparedStatement preparestatement = connect.prepareStatement(sql);
+			ResultSet resultSet = preparestatement.executeQuery();
+
+			while (resultSet.next()) {
+				Store store = new Store();
+				store.setId(resultSet.getInt("id"));
+				store.setRegion_id(resultSet.getInt("region_id"));
+				store.setName(resultSet.getString("name"));
+				store.setRegion_name(resultSet.getString("region_name"));
+				store.setAddress(resultSet.getString("address"));
+				store.setZipcode(resultSet.getInt("zipcode"));
+
+				list.add(store);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+		return list;
+	}
+
+
+	
+	
 	
 }

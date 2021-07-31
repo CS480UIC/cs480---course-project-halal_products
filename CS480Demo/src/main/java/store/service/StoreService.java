@@ -59,5 +59,10 @@ public class StoreService {
 		return storeDao.searchByZip(reg);
 	}
 	
+	public List<Store> findByHalalProducts() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		return storeDao.findByHalalProducts();
+	}
+	
+	
 	
 }

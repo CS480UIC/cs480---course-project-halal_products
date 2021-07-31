@@ -13,6 +13,8 @@
 			Store</a>
 			<a align="center" href="<c:url value='/searchStore'/>" target="body">Search
 			Store</a>
+			<a align="center" href="<c:url value='/findByHalalProducts'/>" target="body">Find Stores
+			with Halal Products</a>
 	</div>
 	&nbsp;
 	<table border="1" width="70%" align="center"
@@ -37,5 +39,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	
 </body>
 </html>
