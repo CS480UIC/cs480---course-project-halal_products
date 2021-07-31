@@ -300,7 +300,7 @@ public class ProductDao {
 			Connection connect = DriverManager.getConnection(
 					"jdbc:mysql://127.0.0.1:3306/halal_products?" + "user=abdul&password=abdul123&serverTimezone=UTC");
 
-			CallableStatement cStmt = connect.prepareCall("{call initialize_tables(?)}");
+			CallableStatement cStmt = connect.prepareCall("{call get_product_details(?)}");
 			cStmt.setString(1, region_name);
 			ResultSet rs = cStmt.executeQuery();
 
