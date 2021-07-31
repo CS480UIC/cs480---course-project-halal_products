@@ -10,9 +10,8 @@
 	<h3 align="center">Halal Product Detail Table</h3>
 	<div style="text-align: center">
 		<form action="<c:url value='/add'/>" method="post">
-			<input type="hidden" name="id" value="${manufacturer.id }" />Region Name :<input
-				type="text" name="name" value="${manufacturer.name }" /> <span
-				style="color: red; font-weight: 900">${errors.name }</span> <br />
+			Region Name :<input type="text" name="name" value="${region_name }" />
+			<span style="color: red; font-weight: 900">${errors.name }</span> <br />
 			<input type="submit" value="Search" />
 		</form>
 	</div>
