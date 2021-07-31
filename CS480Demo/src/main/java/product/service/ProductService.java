@@ -4,6 +4,7 @@ import java.util.List;
 
 import product.dao.ProductDao;
 import product.domain.Product;
+import product.domain.ProductDetail;
 import product.service.ProductException;
 
 public class ProductService {
@@ -45,5 +46,9 @@ public class ProductService {
 	
 	public List<Product> findProduct_NoStore() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		return productDao.findProduct_NoStore();
+	}
+	
+	public List<ProductDetail> getProductDetails(String region_name) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		return productDao.getProductDetails(region_name);
 	}
 }
