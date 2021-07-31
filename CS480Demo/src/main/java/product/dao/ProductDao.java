@@ -1,5 +1,6 @@
 package product.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import product.domain.Product;
+import product.domain.ProductDetail;
 
 /**
  * @author meraj
@@ -31,7 +33,9 @@ public class ProductDao {
 					"jdbc:mysql://127.0.0.1:3306/halal_products?" + "user=abdul&password=abdul123&serverTimezone=UTC");
 
 			String sql = "select * from product order by id";
-	//		String sql = "Select distinct p.* From product p Left Join product_store ps on ps.product_id = p.id Where p.halal_status_id = 1 and (ps.availability is null or ps.availability = 0) Order By p.name ";
+			// String sql = "Select distinct p.* From product p Left Join product_store ps
+			// on ps.product_id = p.id Where p.halal_status_id = 1 and (ps.availability is
+			// null or ps.availability = 0) Order By p.name ";
 			PreparedStatement preparestatement = connect.prepareStatement(sql);
 			ResultSet resultSet = preparestatement.executeQuery();
 
@@ -60,8 +64,7 @@ public class ProductDao {
 	 * @throws InstantiationException
 	 * @throws IllegalAccessException
 	 */
-	public void add(Product product)
-			throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+	public void add(Product product) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager.getConnection(
@@ -82,8 +85,7 @@ public class ProductDao {
 	 * @throws InstantiationException
 	 * @throws IllegalAccessException
 	 */
-	public void update(Product product)
-			throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+	public void update(Product product) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager.getConnection(
@@ -156,7 +158,7 @@ public class ProductDao {
 
 		return Product;
 	}
-	
+
 	/**
 	 * @param product
 	 * @return
@@ -194,7 +196,7 @@ public class ProductDao {
 
 		return product1;
 	}
-	
+
 	public Product findById(int id) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		Product product = new Product();
 
@@ -219,9 +221,9 @@ public class ProductDao {
 
 		return product;
 	}
-	
-	
-	public List<Product> findProduct_NoStore() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+
+	public List<Product> findProduct_NoStore()
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		List<Product> list = new ArrayList<>();
 
 		try {
@@ -251,9 +253,9 @@ public class ProductDao {
 
 		return list;
 	}
-	
-	
-	public List<Product> findProductByStoreAvailability(int reg_id,int s_id) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+
+	public List<Product> findProductByStoreAvailability(int reg_id, int s_id)
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		List<Product> list = new ArrayList<>();
 
 		try {
@@ -262,7 +264,9 @@ public class ProductDao {
 					"jdbc:mysql://127.0.0.1:3306/halal_products?" + "user=abdul&password=abdul123&serverTimezone=UTC");
 
 			String sql = "Set @regionID = ?;Set @storeID = ?;Select * From store s Join product_store ps on ps.store_id = s.id Join product p on ps.product_id = p.id Where ps.availability = 1 and p.halal_status_id = 1 and (@regionID is null or s.region_id = @regionID) Order By s.name, p.name;";
-	//		String sql = "Select distinct p.* From product p Left Join product_store ps on ps.product_id = p.id Where p.halal_status_id = 1 and (ps.availability is null or ps.availability = 0) Order By p.name ";
+			// String sql = "Select distinct p.* From product p Left Join product_store ps
+			// on ps.product_id = p.id Where p.halal_status_id = 1 and (ps.availability is
+			// null or ps.availability = 0) Order By p.name ";
 			PreparedStatement preparestatement = connect.prepareStatement(sql);
 			preparestatement.setInt(1, reg_id);
 			preparestatement.setInt(2, s_id);
@@ -287,6 +291,33 @@ public class ProductDao {
 		return list;
 	}
 
-	
-	
+	public List<ProductDetail> getProductDetails(String region_name)
+			throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+		List<ProductDetail> list = new ArrayList<>();
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Connection connect = DriverManager.getConnection(
+					"jdbc:mysql://127.0.0.1:3306/halal_products?" + "user=abdul&password=abdul123&serverTimezone=UTC");
+
+			CallableStatement cStmt = connect.prepareCall("{call initialize_tables(?)}");
+			cStmt.setString(1, region_name);
+			ResultSet rs = cStmt.executeQuery();
+
+			while (rs.next()) {
+				ProductDetail productDetail = new ProductDetail();
+				productDetail.setProduct_name(rs.getString("product_name"));
+				productDetail.setManufacturer_name(rs.getString("manufacturer_name"));
+				productDetail.setStore_name(rs.getString("store_name"));
+				productDetail.setCertifications(rs.getString("certifications"));
+				productDetail.setRegion_name(rs.getString("region_name"));
+
+				list.add(productDetail);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+		return list;
+	}
 }
