@@ -1,7 +1,7 @@
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_unavailable_products`()
 BEGIN
 	Select distinct p.*, m.name as manufacturer_name, c.name as category_name,
-    ifnull(hs.status, 'NO')
+    ifnull(hs.status, 'NO') as halal_status
 	From product p
 	Join manufacturer m on p.manufacturer_id = m.id
     Join product_category c on p.category_id = c.id
