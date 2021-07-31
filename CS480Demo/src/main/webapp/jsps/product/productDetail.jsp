@@ -1,12 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-
+	<h3 align="center">Halal Product Detail Table</h3>
+	<div style="text-align: center">
+		<form action="<c:url value='/add'/>" method="post">
+			<input type="hidden" name="id" value="${manufacturer.id }" />Region Name :<input
+				type="text" name="name" value="${manufacturer.name }" /> <span
+				style="color: red; font-weight: 900">${errors.name }</span> <br />
+			<input type="submit" value="Search" />
+		</form>
+	</div>
+	&nbsp;
+	<table border="1" width="70%" align="center"
+		style="background-color: #d3d3d3;">
+		<tr>
+			<th>Product</th>
+			<th>Manufacturer</th>
+			<th>Store</th>
+			<th>Region</th>
+			<th>Certifications</th>
+		</tr>
+		<c:forEach items="${DetailList}" var="product">
+			<tr>
+				<td>${product.product_name }</td>
+				<td>${product.manufacturer_name }</td>
+				<td>${product.store_name }</td>
+				<td>${product.region_name }</td>
+				<td>${product.certifucations }</td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>
