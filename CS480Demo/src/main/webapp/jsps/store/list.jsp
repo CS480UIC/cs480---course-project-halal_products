@@ -21,7 +21,7 @@
 			<th>Name</th>
 			<th>Address</th>
 			<th>Zipcode</th>
-			<th>Region Name</th>
+			<th>Region</th>
 			<th>Actions</th>
 		</tr>
 		<c:forEach items="${StoreList}" var="store">
