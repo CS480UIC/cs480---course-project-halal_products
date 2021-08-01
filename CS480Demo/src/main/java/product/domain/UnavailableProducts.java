@@ -2,6 +2,7 @@ package product.domain;
 
 public class UnavailableProducts {
 	
+	private String product_name;
 	private String manufacturer_name;
 	private String category_name;
 	private String halal_status;
@@ -28,6 +29,12 @@ public class UnavailableProducts {
 	@Override
 	public String toString() {
 		return "Unavailabe Products [manufacturer_name=" + manufacturer_name + ", category_name=" + category_name + ", halal_status=" + halal_status + "]";
+	}
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
 
 }
