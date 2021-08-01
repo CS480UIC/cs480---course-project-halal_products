@@ -8,7 +8,7 @@ BEGIN
 	Join product_store ps on ps.product_id = p.id
 	Join store s on ps.store_id = s.id
 	Where ps.availability = 1 and ifnull(p.halal_status_id, 0) = 1 and
-	p.name like concat('%', product_name_param, '%') and
-	(zipcode_param is null or s.zipcode = @zipCode)
+	p.name like concat("%", product_name_param, "%") and
+	(zipcode_param is null or s.zipcode = zipcode_param)
 	Order By s.zipcode, s.name, p.name;
 END
