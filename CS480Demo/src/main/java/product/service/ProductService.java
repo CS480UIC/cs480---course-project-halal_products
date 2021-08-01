@@ -6,6 +6,7 @@ import product.dao.ProductDao;
 import product.domain.Product;
 import product.domain.ProductAvailability;
 import product.domain.ProductDetail;
+import product.domain.UnavailableProducts;
 import product.service.ProductException;
 
 public class ProductService {
@@ -45,7 +46,7 @@ public class ProductService {
 		return productDao.findById(id);
 	}
 	
-	public List<Product> findProduct_NoStore() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public List<UnavailableProducts> findProduct_NoStore() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		return productDao.findProduct_NoStore();
 	}
 	
@@ -53,7 +54,12 @@ public class ProductService {
 		return productDao.findProductByStoreAvailability(region_id);
 	}
 	
+	
+	
 	public List<ProductDetail> getProductDetails(String region_name) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		return productDao.getProductDetails(region_name);
 	}
+	
+	
+	
 }
