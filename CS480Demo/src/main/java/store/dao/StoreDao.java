@@ -294,7 +294,7 @@ public class StoreDao {
 			Connection connect = DriverManager.getConnection(
 					"jdbc:mysql://127.0.0.1:3306/halal_products?" + "user=abdul&password=abdul123&serverTimezone=UTC");
 
-			String sql = "select s.*, r.name as region_name from store s join region r on s.region_id = r.id  where s.name = ? order by name";
+			String sql = "select s.*, r.name as region_name from store s join region r on s.region_id = r.id  where s.name like concat(\"%\", ?, \"%\") order by name";
 			PreparedStatement preparestatement = connect.prepareStatement(sql);
 			preparestatement.setString(1, reg);
 			ResultSet resultSet = preparestatement.executeQuery();
