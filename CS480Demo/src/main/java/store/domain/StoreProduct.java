@@ -6,7 +6,6 @@ public class StoreProduct {
 	private int region_id;
 	private String name;
 	private String address;
-	private String region_name;
 	private int zipcode;
 	private String product_name;
 
@@ -42,14 +41,6 @@ public class StoreProduct {
 		this.address = address;
 	}
 
-	public String getRegion_name() {
-		return region_name;
-	}
-
-	public void setRegion_name(String region_name) {
-		this.region_name = region_name;
-	}
-
 	public int getZipcode() {
 		return zipcode;
 	}
@@ -69,7 +60,7 @@ public class StoreProduct {
 	@Override
 	public String toString() {
 		return "StoreProduct [id=" + id + ", region_id=" + region_id + ", name=" + name + ", address=" + address
-				+ ", region_name=" + region_name + ", zipcode=" + zipcode + ", product_name=" + product_name + "]";
+				+ ", zipcode=" + zipcode + ", product_name=" + product_name + "]";
 	}
 
 }
