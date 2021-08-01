@@ -38,7 +38,7 @@ public class findByHalalProducts extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		request.getRequestDispatcher("/jsps/store/list.jsp").forward(request, response);
+		request.getRequestDispatcher("/jsps/store/storesWithHalal.jsp").forward(request, response);
 	}
 	
 
