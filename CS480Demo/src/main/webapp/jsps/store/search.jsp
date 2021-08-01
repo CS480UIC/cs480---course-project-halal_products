@@ -14,6 +14,8 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 </head>
 <body>
+	
+	<h3 align="center">Store Store</h3>
 	<%String text = "Search ";%>
 	<p style="color: red; font-weight: 900">${msg }</p>
 	<div style="text-align: center">
@@ -24,7 +26,7 @@
 						${item.id == store.region_id ? 'selected="selected"' : ''}>${item.name}</option>
 				</c:forEach>
 			</select><input type="submit" value="Search By Region" name="button" /> <br />
-			<br /> Name :<input type="text" name="name" value="${store.name }" />
+			<br /> Store Name :<input type="text" name="name" value="${store.name }" />
 			<span style="color: red; font-weight: 900">${errors.name }</span> <input
 				type="submit" value="Search By StoreName" name="button" /> <br />
 			<br /> Search by Zipcode :<input type="number" name="zip"
