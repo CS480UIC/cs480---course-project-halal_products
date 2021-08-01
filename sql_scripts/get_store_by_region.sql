@@ -2,7 +2,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `get_store_by_region`(
 	region_id_param int
 )
 BEGIN
-	Select s.name as store_name, ps.availability, p.name as product_name, 
+	Select s.name as store_name, Case When ps.availability = 1 Then 'Yes' Else 'No' End 
+    as availability, p.name as product_name, 
     (Select name From manufacturer where id = p.manufacturer_id) as manufacturer_name
 	From store s
 	Join product_store ps on ps.store_id = s.id
