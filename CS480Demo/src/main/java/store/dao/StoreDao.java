@@ -1,5 +1,6 @@
 package store.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,9 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import manufacturer.domain.Manufacturer;
 import store.domain.Store;
-import user.domain.User;
+import store.domain.StoreProduct;
 
 public class StoreDao {
 
@@ -29,7 +29,7 @@ public class StoreDao {
 					"jdbc:mysql://127.0.0.1:3306/halal_products?" + "user=abdul&password=abdul123&serverTimezone=UTC");
 
 			String sql = "select s.*, r.name as region_name from store s join region r on s.region_id = r.id order by `name`, `address`, `zipcode`";
-		//	String sql = "select * from store order by name";
+			// String sql = "select * from store order by name";
 			PreparedStatement preparestatement = connect.prepareStatement(sql);
 			ResultSet resultSet = preparestatement.executeQuery();
 
@@ -244,14 +244,14 @@ public class StoreDao {
 
 		return store;
 	}
-	
-	public List<Store> searchByRegion_Id(String reg) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+
+	public List<Store> searchByRegion_Id(String reg)
+			throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		List<Store> list = new ArrayList<>();
-		
-		
+
 		int id = Integer.parseInt(reg);
 		System.out.println("In StoreDao:" + reg);
-		
+
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -264,16 +264,16 @@ public class StoreDao {
 			ResultSet resultSet = preparestatement.executeQuery();
 
 			while (resultSet.next()) {
-					Store store = new Store();
-					store.setId(resultSet.getInt("id"));
-					store.setRegion_id(resultSet.getInt("region_id"));
-					store.setName(resultSet.getString("name"));
-					store.setAddress(resultSet.getString("address"));
-					store.setZipcode(resultSet.getInt("zipcode"));
-					store.setRegion_name(resultSet.getString("region_name"));
-					
-					list.add(store);
-				
+				Store store = new Store();
+				store.setId(resultSet.getInt("id"));
+				store.setRegion_id(resultSet.getInt("region_id"));
+				store.setName(resultSet.getString("name"));
+				store.setAddress(resultSet.getString("address"));
+				store.setZipcode(resultSet.getInt("zipcode"));
+				store.setRegion_name(resultSet.getString("region_name"));
+
+				list.add(store);
+
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -281,15 +281,13 @@ public class StoreDao {
 
 		return list;
 	}
-	
-	
-	
-	public List<Store> searchByStore_Name(String reg) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+
+	public List<Store> searchByStore_Name(String reg)
+			throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		List<Store> list = new ArrayList<>();
-		
-		
+
 		System.out.println("In StoreDao:" + reg);
-		
+
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -302,16 +300,16 @@ public class StoreDao {
 			ResultSet resultSet = preparestatement.executeQuery();
 
 			while (resultSet.next()) {
-					Store store = new Store();
-					store.setId(resultSet.getInt("id"));
-					store.setRegion_id(resultSet.getInt("region_id"));
-					store.setName(resultSet.getString("name"));
-					store.setAddress(resultSet.getString("address"));
-					store.setZipcode(resultSet.getInt("zipcode"));
-					store.setRegion_name(resultSet.getString("region_name"));
-					
-					list.add(store);
-				
+				Store store = new Store();
+				store.setId(resultSet.getInt("id"));
+				store.setRegion_id(resultSet.getInt("region_id"));
+				store.setName(resultSet.getString("name"));
+				store.setAddress(resultSet.getString("address"));
+				store.setZipcode(resultSet.getInt("zipcode"));
+				store.setRegion_name(resultSet.getString("region_name"));
+
+				list.add(store);
+
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -319,14 +317,14 @@ public class StoreDao {
 
 		return list;
 	}
-	
-	
-	public List<Store> searchByZip(String reg) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+
+	public List<Store> searchByZip(String reg)
+			throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		List<Store> list = new ArrayList<>();
-		
+
 		int zip = Integer.parseInt(reg);
 		System.out.println("In StoreDao:" + reg);
-		
+
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -339,16 +337,16 @@ public class StoreDao {
 			ResultSet resultSet = preparestatement.executeQuery();
 
 			while (resultSet.next()) {
-					Store store = new Store();
-					store.setId(resultSet.getInt("id"));
-					store.setRegion_id(resultSet.getInt("region_id"));
-					store.setName(resultSet.getString("name"));
-					store.setAddress(resultSet.getString("address"));
-					store.setZipcode(resultSet.getInt("zipcode"));
-					store.setRegion_name(resultSet.getString("region_name"));
-					
-					list.add(store);
-				
+				Store store = new Store();
+				store.setId(resultSet.getInt("id"));
+				store.setRegion_id(resultSet.getInt("region_id"));
+				store.setName(resultSet.getString("name"));
+				store.setAddress(resultSet.getString("address"));
+				store.setZipcode(resultSet.getInt("zipcode"));
+				store.setRegion_name(resultSet.getString("region_name"));
+
+				list.add(store);
+
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -356,9 +354,9 @@ public class StoreDao {
 
 		return list;
 	}
-	
-	
-	public List<Store> findByHalalProducts() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+
+	public List<Store> findByHalalProducts()
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		List<Store> list = new ArrayList<>();
 
 		try {
@@ -367,7 +365,7 @@ public class StoreDao {
 					"jdbc:mysql://127.0.0.1:3306/halal_products?" + "user=abdul&password=abdul123&serverTimezone=UTC");
 
 			String sql = "Select distinct s.*, r.name as region_name From store s join region r on s.region_id = r.id Join product_store ps on ps.store_id = s.id Where ps.availability = 1  Order By s.name";
-		//	String sql = "select * from store order by name";
+			// String sql = "select * from store order by name";
 			PreparedStatement preparestatement = connect.prepareStatement(sql);
 			ResultSet resultSet = preparestatement.executeQuery();
 
@@ -389,8 +387,37 @@ public class StoreDao {
 		return list;
 	}
 
+	public List<StoreProduct> getStoreByProduct(String product_name, Integer zipcode)
+			throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+		List<StoreProduct> list = new ArrayList<>();
 
-	
-	
-	
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Connection connect = DriverManager.getConnection(
+					"jdbc:mysql://127.0.0.1:3306/halal_products?" + "user=abdul&password=abdul123&serverTimezone=UTC");
+
+			CallableStatement cStmt = connect.prepareCall("{call get_store_by_product(?,?)}");
+			cStmt.setString(1, product_name);
+			cStmt.setInt(2, zipcode);
+			ResultSet rs = cStmt.executeQuery();
+
+			while (rs.next()) {
+				StoreProduct storeProduct = new StoreProduct();
+				storeProduct.setId(Integer.parseInt(rs.getString("id")));
+				storeProduct.setRegion_id(Integer.parseInt(rs.getString("region_id")));
+				storeProduct.setName(rs.getString("name"));
+				storeProduct.setAddress(rs.getString("address"));
+				storeProduct.setRegion_name(rs.getString("region_name"));
+				storeProduct.setZipcode(Integer.parseInt(rs.getString("zipcode")));
+				storeProduct.setProduct_name(rs.getString("product_name"));
+
+				list.add(storeProduct);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+		return list;
+	}
+
 }
