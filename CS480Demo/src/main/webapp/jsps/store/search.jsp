@@ -28,7 +28,7 @@
 		<br> <br> Name :<input type="text" name="name"
 			value="${store.name }" /> <span style="color: red; font-weight: 900">${errors.name }</span>
 		<input type="submit" value="Search By StoreName" name="button" /> <br />
-		<br> <br> Search by Zipcode :<input type="text" name="zip"
+		<br> <br> Search by Zipcode :<input type="number" name="zip"
 			value="${store.zipcode }" /> <span
 			style="color: red; font-weight: 900">${errors.zipcode }</span> <input
 			type="submit" value="Search By Zip" name="button" /> <br> <br>
