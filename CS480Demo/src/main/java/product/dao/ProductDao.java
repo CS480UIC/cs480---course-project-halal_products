@@ -12,6 +12,7 @@ import java.util.List;
 import product.domain.Product;
 import product.domain.ProductAvailability;
 import product.domain.ProductDetail;
+import product.domain.UnavailableProducts;
 
 /**
  * @author meraj
@@ -223,27 +224,33 @@ public class ProductDao {
 		return product;
 	}
 
-	public List<Product> findProduct_NoStore()
+	public List<UnavailableProducts> findProduct_NoStore()
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		List<Product> list = new ArrayList<>();
+		List<UnavailableProducts> list = new ArrayList<>();
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager.getConnection(
 					"jdbc:mysql://127.0.0.1:3306/halal_products?" + "user=abdul&password=abdul123&serverTimezone=UTC");
 
-			String sql = "Select distinct p.* From product p Left Join product_store ps on ps.product_id = p.id Where p.halal_status_id = 1 and (ps.availability is null or ps.availability = 0) Order By p.name ";
-			PreparedStatement preparestatement = connect.prepareStatement(sql);
-			ResultSet resultSet = preparestatement.executeQuery();
-
+//			String sql = "Select distinct p.* From product p Left Join product_store ps on ps.product_id = p.id Where p.halal_status_id = 1 and (ps.availability is null or ps.availability = 0) Order By p.name ";
+//			PreparedStatement preparestatement = connect.prepareStatement(sql);
+//			ResultSet resultSet = preparestatement.executeQuery();
+			
+			CallableStatement cStmt = connect.prepareCall("{call get_unavailable_products}");
+			ResultSet resultSet = cStmt.executeQuery();
 			while (resultSet.next()) {
-				Product product = new Product();
-				product.setId(resultSet.getInt("id"));
-				product.setName(resultSet.getString("name"));
-				product.setCategory_id(resultSet.getInt("category_id"));
-				product.setManufacturer_id(resultSet.getInt("manufacturer_id"));
-				product.setHalal_status_id(resultSet.getInt("halal_status_id"));
-				product.setCertifications(resultSet.getString("certifications"));
+				UnavailableProducts product = new UnavailableProducts();
+//				product.setId(resultSet.getInt("id"));
+//				product.setName(resultSet.getString("name"));
+//				product.setCategory_id(resultSet.getInt("category_id"));
+//				product.setManufacturer_id(resultSet.getInt("manufacturer_id"));
+//				product.setHalal_status_id(resultSet.getInt("halal_status_id"));
+//				product.setCertifications(resultSet.getString("certifications"));
+				product.setProduct_name(resultSet.getString("name"));
+				product.setManufacturer_name(resultSet.getString("manufacturer_name"));
+				product.setCategory_name(resultSet.getString("category_name"));
+				product.setHalal_status(resultSet.getString("halal_status"));
 
 				list.add(product);
 			}
@@ -254,6 +261,8 @@ public class ProductDao {
 
 		return list;
 	}
+	
+	
 
 	public List<ProductAvailability> findProductByStoreAvailability(Integer region_id)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
