@@ -18,6 +18,7 @@
 	<display:column>
 		<c:choose>
 			<c:when test="${empty manufacturer.id}"><%text = "Add";%></c:when>
+			<c:when test="${manufacturer.id == 0}"><%text = "Add";%></c:when>
 			<c:otherwise><%text = "Update";%></c:otherwise>
 		</c:choose>
 	</display:column>
@@ -25,7 +26,7 @@
 	<p style="color: red; font-weight: 900">${msg }</p>
 	<form action="<c:url value='/add'/>" method="post">
 		<input type="hidden" name="id" value="${manufacturer.id }" /> Name :<input
-			type="text" name="name" value="${manufacturer.name }" /> <span
+			type="text" name="name" value="${manufacturer.name }" required/> <span
 			style="color: red; font-weight: 900">${errors.name }</span> <br /> <input
 			type="submit" value="<%=text%>" />
 	</form>
