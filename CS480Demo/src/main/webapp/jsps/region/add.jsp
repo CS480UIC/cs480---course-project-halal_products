@@ -25,7 +25,7 @@
 	<p style="color: red; font-weight: 900">${msg }</p>
 	<form action="<c:url value='/addregion'/>" method="post">
 		<input type="hidden" name="id" value="${region.id }" /> Name :<input
-			type="text" name="name" value="${region.name }" /> <span
+			type="text" name="name" value="${region.name }" required /> <span
 			style="color: red; font-weight: 900">${errors.name }</span> <br /> <input
 			type="submit" value="<%=text%>" />
 	</form>
