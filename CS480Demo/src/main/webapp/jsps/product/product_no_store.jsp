@@ -8,10 +8,6 @@
 </head>
 <body>
 	<h3 align="center">List of Halal Products - Unavailable at Stores</h3>
-	<div style="text-align: center">
-		
-	</div>
-	&nbsp;
 	<table border="1" width="70%" align="center"
 		style="background-color: #d3d3d3;">
 		<tr>
@@ -19,17 +15,13 @@
 			<th>Category</th>
 			<th>Manufacturer</th>
 			<th>Halal Status</th>
-			
-			
 		</tr>
 		<c:forEach items="${ProductList}" var="product">
 			<tr>
 				<td>${product.product_name }</td>
 				<td>${product.category_name }</td>
 				<td>${product.manufacturer_name }</td>
-				<td>${product.halal_status }</td>
-				
-				
+				<td>${product.halal_status }</td>	
 			</tr>
 		</c:forEach>
 	</table>
