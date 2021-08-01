@@ -75,5 +75,4 @@ public class getProductDetail extends HttpServlet {
 			request.setAttribute("msg", e.getMessage());
 		}
 	}
-
 }
