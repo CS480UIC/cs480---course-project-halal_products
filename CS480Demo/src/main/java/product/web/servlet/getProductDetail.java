@@ -67,12 +67,15 @@ public class getProductDetail extends HttpServlet {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			request.setAttribute("msg", e.getMessage());
+			request.getRequestDispatcher("/jsps/product/productDetail.jsp").forward(request, response);
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			request.setAttribute("msg", e.getMessage());
+			request.getRequestDispatcher("/jsps/product/productDetail.jsp").forward(request, response);
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			request.setAttribute("msg", e.getMessage());
+			request.getRequestDispatcher("/jsps/product/productDetail.jsp").forward(request, response);
 		}
 	}
 }
