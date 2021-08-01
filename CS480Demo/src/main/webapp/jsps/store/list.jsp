@@ -9,11 +9,10 @@
 <body>
 	<h3 align="center">Store Table</h3>
 	<div style="text-align: center">
-		<a align="center" href="<c:url value='/addStore'/>" target="body">Add
-			Store</a> <a align="center" href="<c:url value='/searchStore'/>"
-			target="body">Search Store</a> <a align="center"
-			href="<c:url value='/findByHalalProducts'/>" target="body">Find
-			Stores with Halal Products</a>
+		<a align="center" href="<c:url value='/addStore'/>" target="body">Add Store</a> | 
+		<a align="center" href="<c:url value='/searchStore'/>" target="body">Search Store</a> | 
+		<a align="center" href="<c:url value='/findByHalalProducts'/>" target="body">Find Stores with Halal Products</a> | 
+		<a align="center" href="<c:url value='/jsps/store/storeProduct.jsp'/>" target="body">Find Stores by Products</a>
 	</div>
 	&nbsp;
 	<table border="1" width="70%" align="center"
