@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-	<h3 align="center">Store Products</h3>
+	<h3 align="center">Product Availability by region</h3>
 	<div style="text-align: center">
 		<form action="<c:url value='/ProductAvailability'/>" method="post">
 			Region : <select name="region">
