@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-	<h3 align="center">Store Products</h3>
+	<h3 align="center">Stores By Products</h3>
 	<div style="text-align: center">
 		<form action="<c:url value='/getStoreProduct'/>" method="post">
 			Product Name :<input type="text" name="product_name" value="${product_name }" />
