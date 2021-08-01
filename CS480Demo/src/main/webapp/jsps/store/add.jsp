@@ -31,12 +31,13 @@
 	<p style="color: red; font-weight: 900">${msg }</p>
 	<form action="<c:url value='/addStore'/>" method="post">
 		<input type="hidden" name="id" value="${store.id }" /> Name :<input
-			type="text" name="name" value="${store.name }" /> <span
+			type="text" name="name" value="${store.name }" required /> <span
 			style="color: red; font-weight: 900">${errors.name }</span> <br />
-		Address :<input type="text" name="address" value="${store.address }" />
+		Address :<input type="text" name="address" value="${store.address }" required />
 		<span style="color: red; font-weight: 900">${errors.address }</span> <br />
-		Zipcode :<input type="text" name="zipcode" value="${store.zipcode }" />
-		<span style="color: red; font-weight: 900">${errors.name }</span> <br />
+		Zipcode :<input type="number" name="zipcode"
+			value="${store.id == 0 ? '' : store.zipcode }" required /> <span
+			style="color: red; font-weight: 900">${errors.name }</span> <br />
 		Region : <select name="region">
 			<c:forEach var="item" items="${listregion}">
 				<option value="${item.id}"
