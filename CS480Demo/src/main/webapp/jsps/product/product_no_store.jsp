@@ -15,10 +15,10 @@
 	<table border="1" width="70%" align="center"
 		style="background-color: #d3d3d3;">
 		<tr>
-			<th>product_name</th>
-			<th>category_name</th>
-			<th>manufacturer_name</th>
-			<th>halal_status</th>
+			<th>Product</th>
+			<th>Category</th>
+			<th>Manufacturer</th>
+			<th>Halal Status</th>
 			
 			
 		</tr>
