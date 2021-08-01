@@ -398,7 +398,14 @@ public class StoreDao {
 
 			CallableStatement cStmt = connect.prepareCall("{call get_store_by_product(?,?)}");
 			cStmt.setString(1, product_name);
-			cStmt.setInt(2, zipcode);
+
+			if (zipcode == null) {
+				cStmt.setNull(2, java.sql.Types.INTEGER);
+			}
+			else {
+				cStmt.setInt(2, zipcode);
+			}
+			
 			ResultSet rs = cStmt.executeQuery();
 
 			while (rs.next()) {
@@ -407,7 +414,6 @@ public class StoreDao {
 				storeProduct.setRegion_id(Integer.parseInt(rs.getString("region_id")));
 				storeProduct.setName(rs.getString("name"));
 				storeProduct.setAddress(rs.getString("address"));
-				storeProduct.setRegion_name(rs.getString("region_name"));
 				storeProduct.setZipcode(Integer.parseInt(rs.getString("zipcode")));
 				storeProduct.setProduct_name(rs.getString("product_name"));
 
