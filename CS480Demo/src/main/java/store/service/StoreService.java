@@ -2,9 +2,9 @@ package store.service;
 
 import java.util.List;
 
-
 import store.dao.StoreDao;
 import store.domain.Store;
+import store.domain.StoreProduct;
 
 public class StoreService {
 
@@ -43,26 +43,32 @@ public class StoreService {
 	public Store findById(int id) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		return storeDao.findById(id);
 	}
-	
-	public List<Store> searchByRegion_Id(String reg) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		System.out.println("In StoreService:"+ reg);
+
+	public List<Store> searchByRegion_Id(String reg)
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		System.out.println("In StoreService:" + reg);
 		return storeDao.searchByRegion_Id(reg);
 	}
-	
-	public List<Store> searchByStore_Name(String reg) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		System.out.println("In StoreService:"+ reg);
+
+	public List<Store> searchByStore_Name(String reg)
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		System.out.println("In StoreService:" + reg);
 		return storeDao.searchByStore_Name(reg);
 	}
-	
-	public List<Store> searchByZip(String reg) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		System.out.println("In StoreService:"+ reg);
+
+	public List<Store> searchByZip(String reg)
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		System.out.println("In StoreService:" + reg);
 		return storeDao.searchByZip(reg);
 	}
-	
-	public List<Store> findByHalalProducts() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+
+	public List<Store> findByHalalProducts()
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		return storeDao.findByHalalProducts();
 	}
-	
-	
-	
+
+	public List<StoreProduct> getStoreByProduct(String product_name, Integer zipcode)
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		return storeDao.getStoreByProduct(product_name, zipcode);
+	}
 }
