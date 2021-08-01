@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-	<h3 align="center">Product Table</h3>
+	<h3 align="center">List of Halal Products - Unavailable at Stores</h3>
 	<div style="text-align: center">
 		
 	</div>
@@ -15,20 +15,20 @@
 	<table border="1" width="70%" align="center"
 		style="background-color: #d3d3d3;">
 		<tr>
-			<th>Name</th>
-			<th>category_id</th>
-			<th>manufacturer_id</th>
-			<th>halal_status_id</th>
-			<th>certifications</th>
+			<th>product_name</th>
+			<th>category_name</th>
+			<th>manufacturer_name</th>
+			<th>halal_status</th>
+			
 			
 		</tr>
 		<c:forEach items="${ProductList}" var="product">
 			<tr>
-				<td>${product.name }</td>
-				<td>${product.category_id }</td>
-				<td>${product.manufacturer_id }</td>
-				<td>${product.halal_status_id }</td>
-				<td>${product.certifications }</td>
+				<td>${product.product_name }</td>
+				<td>${product.category_name }</td>
+				<td>${product.manufacturer_name }</td>
+				<td>${product.halal_status }</td>
+				
 				
 			</tr>
 		</c:forEach>
